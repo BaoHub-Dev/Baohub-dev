@@ -1,0 +1,276 @@
+--[[
+ .____                  ________ ___.    _____                           __                
+ |    |    __ _______   \_____  \\_ |___/ ____\_ __  ______ ____ _____ _/  |_  ___________ 
+ |    |   |  |  \__  \   /   |   \| __ \   __\  |  \/  ___// ___\\__  \\   __\/  _ \_  __ \
+ |    |___|  |  // __ \_/    |    \ \_\ \  | |  |  /\___ \\  \___ / __ \|  | (  <_> )  | \/
+ |_______ \____/(____  /\_______  /___  /__| |____//____  >\___  >____  /__|  \____/|__|   
+         \/          \/         \/    \/                \/     \/     \/                   
+          \_Welcome to LuaObfuscator.com   (Alpha 0.10.9) ~  Much Love, Ferib 
+
+]]--
+
+local v0 = game:GetService("Players");
+local v1 = v0.LocalPlayer;
+local v2 = game:GetService("RunService");
+local v3 = game:GetService("UserInputService");
+local v4 = game:GetService("TweenService");
+local v5 = v1:WaitForChild("PlayerGui");
+local v6 = Instance.new("ScreenGui");
+v6.Name = "BaoHubWallHopGui";
+v6.ResetOnSpawn = false;
+v6.Parent = v5;
+local v10 = Instance.new("TextLabel");
+v10.Name = "IntroLabel";
+v10.Size = UDim2.new(0 + 0, 1589 - 1189, 952 - (802 + 150), 269 - 169);
+v10.Position = UDim2.new(0.5 - 0, -200, 0.5 + 0, -50);
+v10.BackgroundTransparency = 1;
+v10.Text = "Bảo Hub";
+v10.TextColor3 = Color3.fromRGB(997 - (915 + 82), 255, 424 - 274);
+v10.Font = Enum.Font.GothamBold;
+v10.TextSize = 35 + 25;
+v10.TextStrokeTransparency = 0.5 - 0;
+v10.TextStrokeColor3 = Color3.fromRGB(1187 - (1069 + 118), 0 - 0, 0 - 0);
+v10.TextTransparency = 1;
+v10.Parent = v6;
+task.spawn(function()
+	local v39 = 0 + 0;
+	while true do
+		if (v39 == 0) then
+			v4:Create(v10, TweenInfo.new(1 - 0), {TextTransparency=(0 + 0)}):Play();
+			task.wait(1.5);
+			v39 = 792 - (368 + 423);
+		end
+		if (v39 == (6 - 4)) then
+			v10:Destroy();
+			break;
+		end
+		if (v39 == (19 - (10 + 8))) then
+			v4:Create(v10, TweenInfo.new(0.8 - 0), {TextTransparency=(443 - (416 + 26))}):Play();
+			task.wait(0.8 - 0);
+			v39 = 2;
+		end
+	end
+end);
+local function v24(v40, v41, v42)
+	local v43 = Instance.new("TextButton");
+	v43.Name = v40;
+	v43.Size = UDim2.new(0 + 0, 265 - 115, 438 - (145 + 293), 468 - (44 + 386));
+	v43.Position = v42;
+	v43.BackgroundColor3 = Color3.fromRGB(1511 - (998 + 488), 8 + 17, 21 + 4);
+	v43.Text = v41;
+	v43.TextColor3 = Color3.fromRGB(992 - (201 + 571), 1358 - (116 + 1022), 220);
+	v43.Font = Enum.Font.GothamBold;
+	v43.TextSize = 49 - 37;
+	v43.ClipsDescendants = true;
+	v43.Parent = v6;
+	local v55 = Instance.new("UICorner");
+	v55.CornerRadius = UDim.new(0, 5 + 3);
+	v55.Parent = v43;
+	local v58, v59, v60;
+	v43.InputBegan:Connect(function(v75)
+		if ((v75.UserInputType == Enum.UserInputType.MouseButton1) or (v75.UserInputType == Enum.UserInputType.Touch)) then
+			v58 = true;
+			v59 = v75.Position;
+			v60 = v43.Position;
+		end
+	end);
+	v3.InputChanged:Connect(function(v76)
+		if (v58 and ((v76.UserInputType == Enum.UserInputType.MouseMovement) or (v76.UserInputType == Enum.UserInputType.Touch))) then
+			local v83 = v76.Position - v59;
+			v43.Position = UDim2.new(v60.X.Scale, v60.X.Offset + v83.X, v60.Y.Scale, v60.Y.Offset + v83.Y);
+		end
+	end);
+	v3.InputEnded:Connect(function(v77)
+		if ((v77.UserInputType == Enum.UserInputType.MouseButton1) or (v77.UserInputType == Enum.UserInputType.Touch)) then
+			v58 = false;
+		end
+	end);
+	return v43;
+end
+local v25 = v24("HopNgangButton", "Wall Hop Ngang: OFF", UDim2.new(0, 54 - 39, 0.4, 0 - 0));
+local v26 = v24("HopDocButton", "Wall Hop Dọc: OFF", UDim2.new(859 - (814 + 45), 36 - 21, 0.4 + 0, 17 + 31));
+v25.BackgroundTransparency = 886 - (261 + 624);
+v25.TextTransparency = 1;
+v26.BackgroundTransparency = 1 - 0;
+v26.TextTransparency = 1;
+task.spawn(function()
+	task.wait(1.8);
+	v4:Create(v25, TweenInfo.new(0.5), {BackgroundTransparency=(1080 - (1020 + 60)),TextTransparency=0}):Play();
+	v4:Create(v26, TweenInfo.new(0.5), {BackgroundTransparency=(1423 - (630 + 793)),TextTransparency=(0 - 0)}):Play();
+end);
+local v31 = false;
+local v32 = false;
+local v33 = false;
+local v34 = 0 - 0;
+local v35 = workspace.CurrentCamera;
+local v36 = nil;
+local function v37()
+	local v61 = 0 + 0;
+	local v62;
+	local v63;
+	local v64;
+	local v65;
+	while true do
+		if (v61 == (9 - 6)) then
+			v33 = false;
+			break;
+		end
+		if (v61 == (1749 - (760 + 987))) then
+			v65 = v35.CFrame;
+			v35.CFrame = v65 * CFrame.Angles(1913 - (1789 + 124), math.rad(946 - (745 + 21)), 0 + 0);
+			task.wait(0.01 - 0);
+			v35.CFrame = v65;
+			v61 = 11 - 8;
+		end
+		if (v61 == (0 + 0)) then
+			if v33 then
+				return;
+			end
+			v33 = true;
+			v62 = v1.Character;
+			v63 = v62 and v62:FindFirstChild("Humanoid");
+			v61 = 1 + 0;
+		end
+		if (v61 == 1) then
+			v64 = v62 and v62:FindFirstChild("HumanoidRootPart");
+			if (not v63 or not v64) then
+				v33 = false;
+				return;
+			end
+			v63:ChangeState(Enum.HumanoidStateType.Jumping);
+			if v64:IsA("BasePart") then
+				v64.AssemblyLinearVelocity = Vector3.new(v64.AssemblyLinearVelocity.X, 50, v64.AssemblyLinearVelocity.Z);
+			end
+			v61 = 1057 - (87 + 968);
+		end
+	end
+end
+local v38 = nil;
+v2.Heartbeat:Connect(function()
+	local v66 = 0 - 0;
+	local v67;
+	local v68;
+	local v69;
+	local v70;
+	while true do
+		if (v66 == (4 + 0)) then
+			if (v70 and v70.Instance.CanCollide) then
+				local v95 = 0;
+				local v96;
+				while true do
+					if (v95 == 1) then
+						v38 = v96;
+						break;
+					end
+					if (0 == v95) then
+						v96 = v70.Instance;
+						if (v38 and (v38 ~= v96)) then
+							local v103 = 0;
+							local v104;
+							while true do
+								if (v103 == (0 - 0)) then
+									v104 = 0.05;
+									if v32 then
+										v104 = 0.3;
+									end
+									v103 = 1414 - (447 + 966);
+								end
+								if (v103 == (2 - 1)) then
+									if ((v96 ~= v36) and ((os.clock() - v34) > v104)) then
+										v34 = os.clock();
+										v36 = v96;
+										v37();
+									end
+									break;
+								end
+							end
+						end
+						v95 = 1818 - (1703 + 114);
+					end
+				end
+			else
+				local v97 = 701 - (376 + 325);
+				while true do
+					if (v97 == (0 - 0)) then
+						v38 = nil;
+						if not v70 then
+							v36 = nil;
+						end
+						break;
+					end
+				end
+			end
+			break;
+		end
+		if (v66 == 1) then
+			v68 = v67 and v67:FindFirstChild("HumanoidRootPart");
+			if not v68 then
+				return;
+			end
+			v66 = 2;
+		end
+		if (2 == v66) then
+			v69 = RaycastParams.new();
+			v69.FilterDescendantsInstances = {v67};
+			v66 = 1 + 2;
+		end
+		if (v66 == 0) then
+			if (not v31 and not v32) then
+				return;
+			end
+			v67 = v1.Character;
+			v66 = 1;
+		end
+		if (v66 == (6 - 3)) then
+			v69.FilterType = Enum.RaycastFilterType.Exclude;
+			v70 = workspace:Raycast(v68.Position, v35.CFrame.LookVector * 3, v69);
+			v66 = 4;
+		end
+	end
+end);
+v25.MouseButton1Click:Connect(function()
+	v31 = not v31;
+	v25.Text = (v31 and "Wall Hop Ngang: ON") or "Wall Hop Ngang: OFF";
+	v25.BackgroundColor3 = (v31 and Color3.fromRGB(14 - (9 + 5), 526 - (85 + 291), 1355 - (243 + 1022))) or Color3.fromRGB(95 - 70, 21 + 4, 1205 - (1123 + 57));
+	v25.TextColor3 = (v31 and Color3.fromRGB(255, 255, 208 + 47)) or Color3.fromRGB(474 - (163 + 91), 2150 - (1869 + 61), 62 + 158);
+	if v31 then
+		v32 = false;
+		v26.Text = "Wall Hop Dọc: OFF";
+		v26.BackgroundColor3 = Color3.fromRGB(25, 87 - 62, 38 - 13);
+		v26.TextColor3 = Color3.fromRGB(31 + 189, 220, 302 - 82);
+	end
+end);
+v26.MouseButton1Click:Connect(function()
+	local v74 = 0 + 0;
+	while true do
+		if (v74 == (1475 - (1329 + 145))) then
+			v26.BackgroundColor3 = (v32 and Color3.fromRGB(1121 - (140 + 831), 1850 - (1409 + 441), 763 - (15 + 703))) or Color3.fromRGB(12 + 13, 463 - (262 + 176), 25);
+			v26.TextColor3 = (v32 and Color3.fromRGB(1976 - (345 + 1376), 943 - (198 + 490), 1126 - 871)) or Color3.fromRGB(527 - 307, 220, 220);
+			v74 = 1208 - (696 + 510);
+		end
+		if (v74 == 2) then
+			if v32 then
+				local v98 = 0 - 0;
+				while true do
+					if (v98 == (1262 - (1091 + 171))) then
+						v31 = false;
+						v25.Text = "Wall Hop Ngang: OFF";
+						v98 = 1 + 0;
+					end
+					if (v98 == 1) then
+						v25.BackgroundColor3 = Color3.fromRGB(78 - 53, 82 - 57, 25);
+						v25.TextColor3 = Color3.fromRGB(220, 594 - (123 + 251), 1093 - 873);
+						break;
+					end
+				end
+			end
+			break;
+		end
+		if (v74 == (698 - (208 + 490))) then
+			v32 = not v32;
+			v26.Text = (v32 and "Wall Hop Dọc: ON") or "Wall Hop Dọc: OFF";
+			v74 = 1 + 0;
+		end
+	end
+end);
+print("Bảo Hub Auto Wall Hop Loaded Successfully!");
